@@ -1,25 +1,33 @@
+const songs = require("../data/songs");
+
 const index = (req, res) => {
-  res.send("Lista delle canzoni");
+  res.json(songs);
 };
 
 const show = (req, res) => {
-  res.send("Dettaglio delle canzone " + req.params.id);
+  res.json(req.song);
 };
 
 const store = (req, res) => {
-  res.send("Creazione di una canzone");
+  const newSong = req.songNewData;
+  newSong.id = songs.length + 1;
+  songs.push(newSong);
+  res.json(newSong);
 };
 
 const update = (req, res) => {
-  res.send("Modifica totale della canzone " + req.params.id);
-};
-
-const modify = (req, res) => {
-  res.send("Modifica parziale della canzone " + req.params.id);
+  const song = req.song;
+  const newSongData = req.songNewData;
+  song.title = newSongData.title;
+  song.description = newSongData.description;
+  res.json(song);
 };
 
 const destroy = (req, res) => {
-  res.send("Eliminazione della canzone " + req.params.id);
+  const song = req.song;
+  const songIndex = songs.indexOf(song);
+  songs.splice(songIndex, 1);
+  res.sendStatus(204);
 };
 
 module.exports = {
@@ -27,6 +35,5 @@ module.exports = {
   show,
   store,
   update,
-  modify,
   destroy,
 };
