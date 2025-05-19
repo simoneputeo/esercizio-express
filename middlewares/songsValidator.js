@@ -1,6 +1,6 @@
 const songs = require("../data/songs");
 
-const checkSongsExistence = (req, res, next) => {
+const checkSongExistence = (req, res, next) => {
   const songId = parseInt(req.params.id);
   const song = songs.find((s) => s.id === songId);
   if (!song) {
@@ -29,5 +29,5 @@ const validateSongRequestData = (req, res, next) => {
 
 module.exports = {
   validateSongRequestData,
-  checkSongsExistence,
+  checkSongExistence,
 };
