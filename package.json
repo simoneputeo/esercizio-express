@@ -1,0 +1,16 @@
+{
+  "name": "esercizio-express",
+  "version": "1.0.0",
+  "description": "esercizio di prova expressJs",
+  "main": "app.js",
+  "scripts": {
+    "start":"node app.js",
+    "watch":"node --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simone Puteo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
